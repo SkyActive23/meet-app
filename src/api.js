@@ -39,7 +39,7 @@ import NProgress from 'nprogress';
   
     if (token) {
       removeQuery();
-      const url = 'https://y77bi8kh3f.execute-api.us-west-1.amazonaws.com/dev/api/get-events' + '/' + token;
+      const url = 'https://y77bi8kh3f.execute-api.us-west-1.amazonaws.com/dev/api/get-events/' + token;
       const result = await axios.get(url);
       if (result.data) {
         var locations = extractLocations(result.data.events);
@@ -50,6 +50,7 @@ import NProgress from 'nprogress';
       return result.data.events;
     }
   };
+
   export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
@@ -88,7 +89,7 @@ import NProgress from 'nprogress';
     try {
         const encodeCode = encodeURIComponent(code);
 
-        const response = await fetch( 'https://y77bi8kh3f.execute-api.us-west-1.amazonaws.com/dev/api/token' + '/' + encodeCode);
+        const response = await fetch( 'https://y77bi8kh3f.execute-api.us-west-1.amazonaws.com/dev/api/token/' + encodeCode);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
