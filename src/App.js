@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import NumberOfEvents from "./NumberOfEvents.js"
+import NumberOfEvents from "./NumberOfEvents.js";
 import { getEvents, extractLocations } from './api';
 
-
-import './App.css'
+import './nprogress.css';
+import './App.css';
 
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 32
   }
 
   updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
-      events :
-      events.filter((event) => event.location === location);
+        events :
+        events.filter((event) => event.location === location);
       
       this.setState({
         events: locationEvents
@@ -43,7 +44,9 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
         <EventList events={this.state.events} />
-        <NumberOfEvents/>
+        <NumberOfEvents events={this.state.numberOfEvents}
+          numberOfEvents={this.state.numberOfEvents}
+          updateNumberOfEvents={this.updateNumberOfEvents} />
       </div>
     )
   } 

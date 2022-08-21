@@ -100,3 +100,5 @@ import NProgress from 'nprogress';
         error.json();
     }
 }
+
+export { removeQuery, checkToken, getToken };
