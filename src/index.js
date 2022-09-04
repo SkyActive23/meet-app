@@ -7,9 +7,9 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-const root = createRoot(document.getElementById('root'));
-// const root = document.getElementById('root');
-// const root = createRoot(root);
+// const root = createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>

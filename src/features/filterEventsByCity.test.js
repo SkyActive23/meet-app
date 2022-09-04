@@ -4,8 +4,10 @@ import App from '../App';
 import { mockData } from '../mock-data';
 import { mount, shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
+import { extractLocations } from '../api';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
+const locations = extractLocations(mockData);
 
 defineFeature(feature, test => {
     test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
