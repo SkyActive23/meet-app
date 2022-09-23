@@ -3,6 +3,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from './api';
+import Card from 'react-bootstrap/Card'
 
 import './nprogress.css';
 import './App.css';
@@ -11,7 +12,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32,
+    numberOfEvents: 15,
 
   }
 
@@ -55,11 +56,14 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
-        <EventList events={this.state.events} />
+        <h1>Meet App</h1>
         <NumberOfEvents events={this.state.numberOfEvents}
           numberOfEvents={this.state.numberOfEvents}
           updateNumberOfEvents={this.updateNumberOfEvents} />
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+        <Card>
+          <EventList events={this.state.events} />
+        </Card>
       </div>
     )
   } 
