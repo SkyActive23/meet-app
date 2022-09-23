@@ -13,7 +13,6 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 15,
-
   }
 
   updateEvents = (location, eventCount) => {
@@ -47,7 +46,7 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       }
     });
-  }
+  } 
 
   componentWillUnmount(){
     this.mounted = false;
