@@ -34,7 +34,7 @@ import NProgress from 'nprogress';
       return mockData;
     }
 
-    if (!navigator.online) {
+    if (!navigator.onLine) {
       window.alert('You are currently offline.')
       const data = localStorage.getItem('lastEvents');
       NProgress.done();
