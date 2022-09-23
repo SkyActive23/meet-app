@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import WelcomeScreen from './WelcomeScreen';
 import Card from 'react-bootstrap/Card'
 
 import './nprogress.css';
@@ -12,7 +13,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 15
+    numberOfEvents: 15,
+    showWelcomeScreen: undefined
   }
 
   updateEvents = (location, eventCount) => {
@@ -39,20 +41,29 @@ class App extends Component {
     this.updateEvents(this.state.locations, numberOfEvents);
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  } 
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
+  }
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
   render () {
+    if (this.state.showWelcomeScreen === undefined) return <div className='App' />
+
     return (
       <div className="App">
         <h1>Meet App</h1>
@@ -63,6 +74,8 @@ class App extends Component {
         <Card>
           <EventList events={this.state.events} />
         </Card>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </div>
     )
   } 
