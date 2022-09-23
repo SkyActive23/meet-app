@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 2% 5%;
-  background-color: #63ea80;
+  /* padding: 2% 5%; */
+  background-color: #9bbacb;
 }
 
 .App * {
@@ -81,7 +81,7 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   position: relative;
   background-color: #bcdcc4;
@@ -148,7 +148,7 @@ input[type="number"] {
   overflow: visible;
 }
 
-.login-button {
+/* .login-button {
   color: #494949;
   text-transform: uppercase;
   text-decoration: none;
@@ -159,9 +159,9 @@ input[type="number"] {
   transition: all 0.4s ease 0s;
   min-width: 10rem;
   margin: 1rem;
-}
+} */
 
-.google-btn {
+/* .google-btn {
   width: 184px;
   height: 42px;
   margin: 1rem;
@@ -171,8 +171,8 @@ input[type="number"] {
 }
 .google-btn:hover {
   box-shadow: 0 0 6px #4285f4;
-}
-.google-btn:active {
+} */
+/* .google-btn:active {
   background: #1669f2;
 }
 .google-icon-wrapper {
@@ -183,22 +183,22 @@ input[type="number"] {
   height: 40px;
   border-radius: 2px;
   background-color: #fff;
-}
-.google-icon {
+} */
+/* .google-icon {
   position: absolute;
   margin-top: 11px;
   margin-left: -8px;
   width: 18px;
   height: 18px;
-}
-.btn-text {
+} */
+/* .btn-text {
   float: right;
   margin: 11px 11px 0 0;
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.2px;
   font-family: "Roboto";
-}
+} */
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {

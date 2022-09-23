@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   top: 0;
-  background: white;
+  background: #9bbacb;
 }
 
 .login-button {
@@ -37,8 +37,7 @@
 
 .google-icon-wrapper {
   position: absolute;
-  margin-top: 1px;
-  margin-left: 1px;
+  margin-left: -5px;
   width: 40px;
   height: 40px;
   border-radius: 2px;
