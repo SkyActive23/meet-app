@@ -35,7 +35,6 @@ import NProgress from 'nprogress';
     }
 
     if (!navigator.online) {
-      window.alert('You are currently offline.')
       const data = localStorage.getItem('lastEvents');
       NProgress.done();
       return data ? JSON.parse(data).events : [];;

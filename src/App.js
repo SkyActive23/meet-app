@@ -4,6 +4,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from './api';
 import Card from 'react-bootstrap/Card'
+import { OfflineAlert } from './Alert';
 
 import './nprogress.css';
 import './App.css';
@@ -13,7 +14,6 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 15,
-
   }
 
   updateEvents = (location, eventCount) => {
@@ -47,6 +47,15 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       }
     });
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText: "Your're offline! The data was loaded from the cache.",
+      });
+    } else {
+      this.setState({
+        offlineText: '',
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -57,6 +66,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Meet App</h1>
+        <OfflineAlert/>
         <NumberOfEvents events={this.state.numberOfEvents}
           numberOfEvents={this.state.numberOfEvents}
           updateNumberOfEvents={this.updateNumberOfEvents} />
