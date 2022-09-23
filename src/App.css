@@ -77,6 +77,11 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.EventList {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -84,7 +89,7 @@ input[type="number"] {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   position: relative;
-  background-color: #bcdcc4;
+  background-color: #dee5e0;
 }
 
 .details-btn {
@@ -132,6 +137,7 @@ input[type="number"] {
 
 .Alert {
   position: fixed;
+  align-items: right;
   top: 20px;
 }
 
