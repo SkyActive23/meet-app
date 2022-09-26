@@ -27,6 +27,13 @@ p {
   display: block;
 }
 
+.charts {
+  background-color: #dee5e0;
+  border: black 1px solid;
+  margin: 30px;
+  border-radius: 10px;
+}
+
 input[type="text"],
 input[type="number"] {
   padding: 8px 6px 8px 10px;
