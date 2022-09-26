@@ -3,7 +3,6 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
 import { EventGenre } from './EventGenre';
-import { getEvents, extractLocations } from './api';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import WelcomeScreen from './WelcomeScreen';
@@ -59,16 +58,6 @@ class App extends Component {
       });
     }
   }
-
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
-   
 
   componentWillUnmount(){
     this.mounted = false;
