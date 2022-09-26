@@ -4,9 +4,9 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
 import { EventGenre } from './EventGenre';
 import { getEvents, extractLocations } from './api';
-// import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-// import WelcomeScreen from './WelcomeScreen';
+import WelcomeScreen from './WelcomeScreen';
 import Card from 'react-bootstrap/Card'
 
 import './nprogress.css';
@@ -17,7 +17,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 15,
-    // showWelcomeScreen: undefined
+    showWelcomeScreen: undefined
   }
 
   updateEvents = (location, eventCount) => {
@@ -44,21 +44,21 @@ class App extends Component {
     this.updateEvents(this.state.locations, numberOfEvents);
   };
 
-  // async componentDidMount() {
-  //   this.mounted = true;
-  //   const accessToken = localStorage.getItem('access_token');
-  //   const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-  //   const searchParams = new URLSearchParams(window.location.search);
-  //   const code = searchParams.get("code");
-  //   this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-  //   if ((code || isTokenValid) && this.mounted) {
-  //     getEvents().then((events) => {
-  //       if (this.mounted) {
-  //         this.setState({ events, locations: extractLocations(events) });
-  //       }
-  //     });
-  //   }
-  // }
+  async componentDidMount() {
+    this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
+  }
 
   componentDidMount() {
     this.mounted = true;
@@ -86,7 +86,7 @@ class App extends Component {
 
 
   render () {
-    // if (this.state.showWelcomeScreen === undefined) return <div className='App' />
+    if (this.state.showWelcomeScreen === undefined) return <div className='App' />
 
     return (
       <div className="App">
@@ -117,8 +117,8 @@ class App extends Component {
         <Card>
           <EventList events={this.state.events} />
         </Card>
-        {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} /> */}
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </div>
     )
   } 
