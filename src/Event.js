@@ -1,17 +1,10 @@
 import React, { Component } from "react";
-// import { mockData } from './mock-data';
 import Card from 'react-bootstrap/Card'
 
 class Event extends Component {
   state = {
 		collapsed: true,
 	};
-
-	// showSummary = () => {
-	// 	if (this.state.collapsed === false) {
-	// 		return mockData[0].description;
-	// 	}
-	// };
 
 	handleClick = () => {
 		this.setState({
@@ -33,12 +26,10 @@ class Event extends Component {
 					{collapsed ? 'Show Details' : 'Hide Details'}
 				</button>
 				{!collapsed && (
-					// <div className={`event-details ${this.state.collapsed ? 'hide' : 'show'}`}>{this.showSummary()}</div>
 					<div className="additional-details">
 						<p className=".event-description">{event.description}</p>
 					</div>
 				)}
-
 			</Card>
 		);
   }
