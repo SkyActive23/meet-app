@@ -7,11 +7,11 @@ class Event extends Component {
 		collapsed: true,
 	};
 
-	showSummary = () => {
-		if (this.state.collapsed === false) {
-			return mockData[0].description;
-		}
-	};
+	// showSummary = () => {
+	// 	if (this.state.collapsed === false) {
+	// 		return mockData[0].description;
+	// 	}
+	// };
 
 	handleClick = () => {
 		this.setState({
@@ -32,8 +32,13 @@ class Event extends Component {
 				<button className={`btn-details ${collapsed ? 'show' : 'hide'}-details`} onClick={this.handleClick}>
 					{collapsed ? 'Show Details' : 'Hide Details'}
 				</button>
-				{!collapsed &&
-					<div className={`event-details ${this.state.collapsed ? 'hide' : 'show'}`}>{this.showSummary()}</div>}
+				{!collapsed && (
+					// <div className={`event-details ${this.state.collapsed ? 'hide' : 'show'}`}>{this.showSummary()}</div>
+					<div className="additional-details">
+						<p className=".event-description">{event.description}</p>
+					</div>
+				)}
+
 			</Card>
 		);
   }
