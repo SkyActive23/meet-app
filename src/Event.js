@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { mockData } from './mock-data';
+// import { mockData } from './mock-data';
 import Card from 'react-bootstrap/Card'
 
 class Event extends Component {
